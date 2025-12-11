@@ -5,17 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MantaTrack - Vegetable Price Tracker</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="landing-active">
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <a href="#price-board" class="logo">MantaTrack</a>
+            <a href="#landing" onclick="showPage('landing')" class="logo">
+                <img src="assets/images/logo.png" alt="MantaTrack" class="logo-img">
+                <span class="logo-text">MantaTrack</span>
+            </a>
             <nav class="nav-links">
-                <a href="#price-board" class="nav-link active">
-                    <i class="fas fa-home"></i>
+                <a href="#price-board" class="nav-link" onclick="showPage('price-board')">
+                    <i class="fas fa-chart-line"></i>
                     Price Board
                 </a>
                 <a href="#login" class="nav-link" id="login-link">
@@ -38,14 +44,38 @@
         </div>
     </header>
 
+    <!-- Notification Container -->
+    <div id="notification-container"></div>
+
+    <!-- Landing Page (outside container for full width) -->
+    <section id="landing" class="page active">
+        <div class="landing-hero">
+            <div class="hero-content">
+                <img src="assets/images/MantaTrack_logo-removebg.png" alt="MantaTrack" class="hero-logo">
+                <h1 class="hero-title">Mantalongon's Vegetable Market</h1>
+                <p class="hero-subtitle">Real-time vegetable prices from local commissioners. Compare prices, make informed decisions.</p>
+                <div class="hero-buttons">
+                    <a href="#price-board" onclick="showPage('price-board')" class="btn btn-primary btn-lg">
+                        <i class="fas fa-chart-line"></i>
+                        View Prices
+                    </a>
+                    <a href="#signup" onclick="showPage('signup')" class="btn btn-secondary btn-lg">
+                        <i class="fas fa-user-plus"></i>
+                        Sign Up as Buyer
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Main Content -->
     <main class="container">
-        <!-- Price Board (Homepage) -->
-        <section id="price-board" class="page active">
-            <div class="card">
+        <!-- Price Board -->
+        <section id="price-board" class="page">
+            <div class="card mb-6">
                 <div class="card-header">
                     <h1 class="card-title">Vegetable Price Board</h1>
-                    <p class="text-gray-600">Compare prices across different markets</p>
+                    <p class="text-gray-600">Compare vegetable prices from all buyers</p>
                 </div>
             </div>
 
@@ -55,7 +85,7 @@
                     <!-- Search Bar -->
                     <div class="search-container">
                         <i class="fas fa-search search-icon"></i>
-                        <input type="text" placeholder="Search vegetables, buyers, or markets..." 
+                        <input type="text" placeholder="Search vegetables or commissioners..."
                                class="search-input" id="search-input">
                     </div>
 
@@ -65,31 +95,58 @@
                             <label class="form-label">Vegetable</label>
                             <select class="form-select" id="vegetable-filter">
                                 <option value="">All Vegetables</option>
-                                <option value="Tomato">Tomato</option>
-                                <option value="Potato">Potato</option>
-                                <option value="Onion">Onion</option>
-                                <option value="Carrot">Carrot</option>
+                                <option value="Alugbati">Alugbati</option>
+                                <option value="Baguio beans">Baguio beans</option>
+                                <option value="Bell Pepper">Bell Pepper</option>
+                                <option value="Bitter gourd (Ampalaya)">Bitter gourd (Ampalaya)</option>
+                                <option value="Bok Choy">Bok Choy</option>
+                                <option value="Bottle gourd (Upo)">Bottle gourd (Upo)</option>
+                                <option value="Brocolli">Brocolli</option>
                                 <option value="Cabbage">Cabbage</option>
+                                <option value="Carrot">Carrot</option>
+                                <option value="Cassava">Cassava</option>
+                                <option value="Cauliflower">Cauliflower</option>
+                                <option value="Cayenne pepper (Labuyo)">Cayenne pepper (Labuyo)</option>
+                                <option value="Chili Pepper (Siling Kulikot)">Chili Pepper (Siling Kulikot)</option>
+                                <option value="Cucumber">Cucumber</option>
+                                <option value="Eggplant">Eggplant</option>
+                                <option value="Ginger">Ginger</option>
+                                <option value="Kangkong">Kangkong</option>
+                                <option value="Lettuce">Lettuce</option>
+                                <option value="Okra">Okra</option>
+                                <option value="Onion">Onion</option>
+                                <option value="Pechay">Pechay</option>
+                                <option value="Potato">Potato</option>
+                                <option value="Raddish">Raddish</option>
+                                <option value="Sayote">Sayote</option>
+                                <option value="Sponge gourd (Patola)">Sponge gourd (Patola)</option>
+                                <option value="Spring Onion">Spring Onion</option>
+                                <option value="Squash">Squash</option>
+                                <option value="String beans">String beans</option>
+                                <option value="Sweet Potato">Sweet Potato</option>
+                                <option value="Taro">Taro</option>
+                                <option value="Tomato">Tomato</option>
+                                <option value="Yam (Ube)">Yam (Ube)</option>
                             </select>
                         </div>
 
                         <div class="filter-group">
-                            <label class="form-label">Market</label>
-                            <select class="form-select" id="market-filter">
-                                <option value="">All Markets</option>
-                                <option value="Manila Market">Manila Market</option>
-                                <option value="Quezon City Market">Quezon City Market</option>
-                                <option value="Makati Market">Makati Market</option>
+                            <label class="form-label">Commissioner</label>
+                            <select class="form-select" id="commissioner-filter">
+                                <option value="">All Commissioners</option>
+                                <!-- Options will be populated dynamically -->
                             </select>
                         </div>
 
                         <div class="filter-group">
-                            <label class="form-label">Sort By</label>
+                            <label class="form-label">Sort/Filter By</label>
                             <select class="form-select" id="sort-filter">
                                 <option value="">Default</option>
                                 <option value="price-asc">Price (Low to High)</option>
                                 <option value="price-desc">Price (High to Low)</option>
                                 <option value="date-desc">Latest Updates</option>
+                                <option value="status-good">Good Quality </option>
+                                <option value="status-low">Low Quality </option>
                             </select>
                         </div>
 
@@ -107,70 +164,26 @@
             <!-- Results Count -->
             <div class="mb-4">
                 <p class="text-gray-600">
-                    Showing <span id="results-count">8</span> of 8 price entries
+                    Showing <span id="results-count">8</span> of <span id="total-count">8</span> price entries
                 </p>
             </div>
 
             <!-- Price Table -->
-            <div class="table-container">
+            <div class="table-container card">
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Vegetable</th>
                             <th>Price</th>
                             <th>Unit</th>
-                            <th>Buyer</th>
-                            <th>Market</th>
+                            <th>Commissioner</th>
                             <th>Last Updated</th>
                             <th>Status</th>
+                            <th>Notes</th>
                         </tr>
                     </thead>
                     <tbody id="price-table-body">
-                        <tr onclick="openPriceHistory('1')" class="cursor-pointer hover:bg-gray-50">
-                            <td class="font-medium">Tomato</td>
-                            <td class="font-semibold text-green-600">₱45.00</td>
-                            <td class="text-gray-600">kg</td>
-                            <td>Fresh Market Co.</td>
-                            <td>Manila Market</td>
-                            <td class="text-gray-600">Dec 15, 2024 09:30</td>
-                            <td><span class="badge badge-success">Fresh</span></td>
-                        </tr>
-                        <tr onclick="openPriceHistory('2')" class="cursor-pointer hover:bg-gray-50">
-                            <td class="font-medium">Potato</td>
-                            <td class="font-semibold text-green-600">₱35.00</td>
-                            <td class="text-gray-600">kg</td>
-                            <td>Green Grocers</td>
-                            <td>Quezon City Market</td>
-                            <td class="text-gray-600">Dec 14, 2024 14:20</td>
-                            <td><span class="badge badge-warning">Stale</span></td>
-                        </tr>
-                        <tr onclick="openPriceHistory('3')" class="cursor-pointer hover:bg-gray-50">
-                            <td class="font-medium">Onion</td>
-                            <td class="font-semibold text-green-600">₱60.00</td>
-                            <td class="text-gray-600">kg</td>
-                            <td>Farm Fresh Supply</td>
-                            <td>Makati Market</td>
-                            <td class="text-gray-600">Dec 15, 2024 08:15</td>
-                            <td><span class="badge badge-success">Fresh</span></td>
-                        </tr>
-                        <tr onclick="openPriceHistory('4')" class="cursor-pointer hover:bg-gray-50">
-                            <td class="font-medium">Carrot</td>
-                            <td class="font-semibold text-green-600">₱40.00</td>
-                            <td class="text-gray-600">kg</td>
-                            <td>Organic Market</td>
-                            <td>Manila Market</td>
-                            <td class="text-gray-600">Dec 15, 2024 10:45</td>
-                            <td><span class="badge badge-success">Fresh</span></td>
-                        </tr>
-                        <tr onclick="openPriceHistory('5')" class="cursor-pointer hover:bg-gray-50">
-                            <td class="font-medium">Cabbage</td>
-                            <td class="font-semibold text-green-600">₱25.00</td>
-                            <td class="text-gray-600">pc</td>
-                            <td>Fresh Market Co.</td>
-                            <td>Quezon City Market</td>
-                            <td class="text-gray-600">Dec 14, 2024 16:30</td>
-                            <td><span class="badge badge-warning">Stale</span></td>
-                        </tr>
+                        <!-- Dynamic content will be loaded here -->
                     </tbody>
                 </table>
             </div>
@@ -178,36 +191,35 @@
 
         <!-- Login Page -->
         <section id="login" class="page">
-            <div class="login-split-container">
-                <div class="login-left-panel">
-                    <div class="login-overlay"></div>
-                    <div class="login-content">
-                        <h1>Welcome<br>to MantaTrack!</h1>
-                        <p>Easily stay updated on the latest prices of vegetables in Mantalongon, Dalaguete.</p>
-                        <div class="login-copyright">
-                            © 2025 MantaTrack. All rights reserved.
-                        </div>
+            <div class="auth-container">
+                <div class="auth-card">
+                    <div class="auth-logo">
+                        <img src="assets/images/logo.png" alt="MantaTrack" class="auth-logo-img">
                     </div>
-                </div>
-
-                <div class="login-right-panel">
-                    <h2>Login to MantaTrack</h2>
-                    <p class="login-subtitle">Access your buyer dashboard</p>
+                    <h2 class="auth-title">Login to MantaTrack</h2>
+                    <p class="text-gray-600 mb-6">Access your buyer dashboard</p>
                     
-                    <form onsubmit="handleLogin(event)" class="login-form">
-                        <input type="email" name="email" id="login-email" placeholder="Email" required />
-                        <input type="password" name="password" id="login-password" placeholder="Password" required />
-                        <button type="submit">Login</button>
+                    <form onsubmit="handleLogin(event)" class="auth-form" novalidate>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" id="login-email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-input" id="login-password" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-full">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Login
+                        </button>
                     </form>
                     
-                    <p class="login-signup-link">Don't have an account? <a href="#signup" onclick="showPage('signup')">Create now</a></p>
-                    
-                    <div class="login-footer-link">
-                        <div class="demo-info">
-                            <p class="text-sm text-gray-500">Demo Account:</p>
-                            <p class="text-sm">Email: demo@example.com</p>
-                            <p class="text-sm">Password: demo123</p>
-                        </div>
+                    <div class="auth-footer">
+                        <p class="text-gray-600">Don't have an account?
+                            <a href="#signup" onclick="showPage('signup')" class="text-blue-600">Sign up</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -217,46 +229,42 @@
         <section id="signup" class="page">
             <div class="auth-container">
                 <div class="auth-card">
+                    <div class="auth-logo">
+                        <img src="assets/images/logo.png" alt="MantaTrack" class="auth-logo-img">
+                    </div>
                     <h2 class="auth-title">Create Account</h2>
                     <p class="text-gray-600 mb-6">Join MantaTrack as a buyer</p>
                     
-                    <form onsubmit="handleSignup(event)" class="auth-form">
+                    <form onsubmit="handleSignup(event)" class="auth-form" novalidate>
                         <div class="form-group">
-                            <label class="form-label">Business Name</label>
+                            <label class="form-label">Name</label>
                             <input type="text" class="form-input" id="signup-name" required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label class="form-label">Email</label>
                             <input type="email" class="form-input" id="signup-email" required>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label class="form-label">Market</label>
-                            <input type="text" class="form-input" id="signup-market" required>
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-input" id="signup-password" required>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label class="form-label">Location</label>
-                            <input type="text" class="form-input" id="signup-location" required>
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password" class="form-input" id="signup-confirm-password" required>
+                            <div class="error-message" id="confirm-password-error"></div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="signup-contact-visible">
-                                <span class="checkmark"></span>
-                                Make contact information visible to farmers
-                            </label>
-                        </div>
-                        
+
                         <button type="submit" class="btn btn-primary w-full">
                             <i class="fas fa-user-plus"></i>
                             Create Account
                         </button>
                     </form>
-                    
+
                     <div class="auth-footer">
-                        <p class="text-gray-600">Already have an account? 
+                        <p class="text-gray-600">Already have an account?
                             <a href="#login" onclick="showPage('login')" class="text-blue-600">Login</a>
                         </p>
                     </div>
@@ -296,7 +304,7 @@
                     </div>
 
                     <div class="stat-card">
-                        <i class="fas fa-dollar-sign text-green-600 text-3xl mb-2"></i>
+                        <i class="fas fa-peso-sign text-green-600 text-3xl mb-2"></i>
                         <div class="stat-number">₱41.00</div>
                         <div class="stat-label">Average Price</div>
                     </div>
@@ -304,7 +312,7 @@
                     <div class="stat-card">
                         <i class="fas fa-clock text-orange-600 text-3xl mb-2"></i>
                         <div class="stat-number">2</div>
-                        <div class="stat-label">Stale Prices</div>
+                        <div class="stat-label">Low Quality Items</div>
                     </div>
 
                     <div class="stat-card">
@@ -317,9 +325,9 @@
                 <!-- User's Price Entries -->
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title">Your Purchase Prices</h2>
-                        <div class="text-sm text-gray-600">
-                            5 entries • Last updated: Dec 15, 2024 10:45
+                        <h2 class="card-title">Your Price Entries</h2>
+                        <div class="text-sm text-gray-600" id="dashboard-entries-info">
+                            Loading...
                         </div>
                     </div>
 
@@ -333,50 +341,12 @@
                                     <th>Quantity</th>
                                     <th>Last Updated</th>
                                     <th>Status</th>
+                                    <th>Notes</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody id="dashboard-table-body">
-                                <tr>
-                                    <td class="font-medium">Tomato</td>
-                                    <td class="font-semibold text-green-600">₱45.00</td>
-                                    <td class="text-gray-600">kg</td>
-                                    <td class="text-gray-600">100</td>
-                                    <td class="text-gray-600">Dec 15, 2024 09:30</td>
-                                    <td><span class="badge badge-success">Fresh</span></td>
-                                    <td>
-                                        <div class="flex gap-2">
-                                            <button onclick="openEditModal('1')" class="btn btn-outline btn-sm">
-                                                <i class="fas fa-edit"></i>
-                                                Edit
-                                            </button>
-                                            <button onclick="deleteVegetable('1')" class="btn btn-outline btn-sm text-red-600 hover:bg-red-50">
-                                                <i class="fas fa-trash"></i>
-                                                Delete
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">Potato</td>
-                                    <td class="font-semibold text-green-600">₱35.00</td>
-                                    <td class="text-gray-600">kg</td>
-                                    <td class="text-gray-600">150</td>
-                                    <td class="text-gray-600">Dec 14, 2024 14:20</td>
-                                    <td><span class="badge badge-warning">Stale</span></td>
-                                    <td>
-                                        <div class="flex gap-2">
-                                            <button onclick="openEditModal('2')" class="btn btn-outline btn-sm">
-                                                <i class="fas fa-edit"></i>
-                                                Edit
-                                            </button>
-                                            <button onclick="deleteVegetable('2')" class="btn btn-outline btn-sm text-red-600 hover:bg-red-50">
-                                                <i class="fas fa-trash"></i>
-                                                Delete
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
+                            <tbody>
+                                <!-- Dynamic content will be loaded here -->
                             </tbody>
                         </table>
                     </div>
@@ -384,79 +354,6 @@
             </div>
         </section>
     </main>
-
-    <!-- Price History Modal -->
-    <div id="price-history-modal" class="modal-overlay" style="display: none;">
-        <div class="modal">
-            <div class="modal-header">
-                <h2 class="modal-title">Price History - Tomato</h2>
-                <button onclick="closeModal('price-history-modal')" class="modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            
-            <div class="modal-body">
-                <!-- Current Price Info -->
-                <div class="card mb-6">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <h3 class="font-semibold text-lg">Tomato</h3>
-                            <p class="text-gray-600">Fresh Market Co. • Manila Market</p>
-                        </div>
-                        <div class="text-right">
-                            <div class="text-2xl font-bold text-green-600">₱45.00</div>
-                            <div class="text-sm text-gray-600">per kg</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Price History Table -->
-                <div class="card">
-                    <h3 class="font-semibold mb-4">Price Updates</h3>
-                    <div class="table-container">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Old Price</th>
-                                    <th>New Price</th>
-                                    <th>Change</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-gray-600">Dec 15, 2024 09:30</td>
-                                    <td>₱42.00</td>
-                                    <td class="font-semibold">₱45.00</td>
-                                    <td>
-                                        <span class="font-semibold text-red-600">
-                                            +₱3.00 (+7.1%)
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-gray-600">Dec 10, 2024 14:20</td>
-                                    <td>₱40.00</td>
-                                    <td class="font-semibold">₱42.00</td>
-                                    <td>
-                                        <span class="font-semibold text-red-600">
-                                            +₱2.00 (+5.0%)
-                                        </span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="modal-footer">
-                <button onclick="closeModal('price-history-modal')" class="btn btn-secondary">
-                    Close
-                </button>
-            </div>
-        </div>
-    </div>
 
     <!-- Add/Edit Modal -->
     <div id="add-edit-modal" class="modal-overlay" style="display: none;">
@@ -468,24 +365,17 @@
                 </button>
             </div>
             
-            <form onsubmit="handleSaveEntry(event)" class="modal-body">
+            <form onsubmit="handleSaveEntry(event)" class="modal-body" novalidate>
                 <div class="form-group">
                     <label class="form-label">Vegetable *</label>
-                    <select class="form-select" id="entry-vegetable" required>
-                        <option value="">Select a vegetable</option>
-                        <option value="Tomato">Tomato</option>
-                        <option value="Potato">Potato</option>
-                        <option value="Onion">Onion</option>
-                        <option value="Carrot">Carrot</option>
-                        <option value="Cabbage">Cabbage</option>
-                    </select>
+                    <div id="entry-vegetable-container"></div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
                     <div class="form-group">
-                        <label class="form-label">Purchase Price (₱) *</label>
+                        <label class="form-label">Price (₱) *</label>
                         <input type="number" step="0.01" min="0" class="form-input" 
-                               id="entry-price" placeholder="Enter price you're paying" required>
+                               id="entry-price" placeholder="0.00" required>
                     </div>
 
                     <div class="form-group">
@@ -499,15 +389,23 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Quantity Needed (Optional)</label>
-                    <input type="number" min="0" class="form-input" 
-                           id="entry-quantity" placeholder="Enter quantity you need">
+                    <label class="form-label">Available Quantity (Optional)</label>
+                    <input type="number" min="0" class="form-input"
+                           id="entry-quantity" placeholder="Enter available quantity">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Status *</label>
+                    <select class="form-select" id="entry-status" required>
+                        <option value="Good Quality">Good Quality</option>
+                        <option value="Low Quality">Low Quality</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Notes (Optional)</label>
-                    <textarea class="form-input" rows="3" id="entry-notes" 
-                              placeholder="Add purchase conditions, quality requirements, etc."></textarea>
+                    <textarea class="form-input" rows="3" id="entry-notes"
+                              placeholder="Add any additional notes..."></textarea>
                 </div>
             </form>
             
@@ -515,7 +413,7 @@
                 <button onclick="closeModal('add-edit-modal')" class="btn btn-outline">
                     Cancel
                 </button>
-                <button onclick="handleSaveEntry()" class="btn btn-primary">
+                <button id="save-entry-btn" onclick="handleSaveEntry()" class="btn btn-primary">
                     <i class="fas fa-save"></i>
                     Save
                 </button>
@@ -525,7 +423,7 @@
 
     <!-- Bulk Update Modal -->
     <div id="bulk-update-modal" class="modal-overlay" style="display: none;">
-        <div class="modal">
+        <div class="modal" style="max-width: 700px;">
             <div class="modal-header">
                 <h2 class="modal-title">Bulk Update Prices</h2>
                 <button onclick="closeModal('bulk-update-modal')" class="modal-close">
@@ -553,30 +451,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="font-medium">Tomato</td>
-                                <td class="text-gray-600">₱45.00</td>
-                                <td>
-                                    <div class="relative">
-                                        <i class="fas fa-dollar-sign absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-                                        <input type="number" step="0.01" min="0" class="form-input pl-8" value="45.00">
-                                    </div>
-                                </td>
-                                <td class="text-gray-600">kg</td>
-                                <td><span class="text-gray-500 text-sm">No change</span></td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Potato</td>
-                                <td class="text-gray-600">₱35.00</td>
-                                <td>
-                                    <div class="relative">
-                                        <i class="fas fa-dollar-sign absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-                                        <input type="number" step="0.01" min="0" class="form-input pl-8 border-green-500 bg-green-50" value="38.00">
-                                    </div>
-                                </td>
-                                <td class="text-gray-600">kg</td>
-                                <td><span class="badge badge-success">Modified</span></td>
-                            </tr>
+                            <!-- Dynamic content will be loaded here -->
                         </tbody>
                     </table>
                 </div>
@@ -585,7 +460,7 @@
             <div class="modal-footer">
                 <div class="flex items-center gap-4">
                     <span class="text-sm text-gray-600">
-                        1 of 2 entries will be updated
+                        Entries will be updated
                     </span>
                 </div>
                 <div class="flex gap-2">
@@ -594,12 +469,58 @@
                     </button>
                     <button onclick="handleBulkUpdate()" class="btn btn-primary">
                         <i class="fas fa-save"></i>
-                        Save 1 Changes
+                        Save Changes
                     </button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="modal-overlay" style="display: none;">
+        <div class="modal" style="max-width: 450px;">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i class="fas fa-exclamation-triangle text-orange-600"></i>
+                    Confirm Action
+                </h3>
+                <button onclick="closeModal('confirmation-modal')" class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p id="confirmation-message" class="text-gray-700" style="font-size: 16px; line-height: 1.6;">
+                    Are you sure you want to delete this item?
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button onclick="closeModal('confirmation-modal')" class="btn btn-outline">
+                    <i class="fas fa-times"></i>
+                    Cancel
+                </button>
+                <button onclick="confirmDelete()" class="btn btn-primary" style="background-color: #dc2626; border-color: #dc2626;">
+                    <i class="fas fa-trash"></i>
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-text">
+                <p>&copy; 2025 MantaTrack - Vegetable Price Tracking System</p>
+            </div>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="#privacy">Privacy</a>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
